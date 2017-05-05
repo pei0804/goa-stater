@@ -7,7 +7,8 @@ gen: clean generate
 rerun: clean generate run
 
 depend:
-	go get -v ./...
+	@which goagen || go get -v github.com/goadesign/goa/goagen
+	@go get -v ./...
 
 bootstrap:
 	@goagen bootstrap -d $(REPO)/design
