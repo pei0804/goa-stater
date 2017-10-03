@@ -8,12 +8,20 @@ REPO:=github.com/pei0804/goa-stater
 init: depend bootstrap
 gen: clean generate
 rerun: clean generate run
+install: submodule depend
+
+submodule:
+	git submodule init
+	git submodule update
 
 depend:
 	go get -u github.com/goadesign/goa/goagen
 	go get -u github.com/alecthomas/gometalinter/...
 	gometalinter --install --update --force
-	go get -u ./...
+	go get -u github.com/goadesign/goa
+	go get -u github.com/goadesign/gorma
+	go get -u github.com/jinzhu/gorm
+	go get -u github.com/deadcheat/goacors
 
 bootstrap:
 	goagen bootstrap -d $(REPO)/design
