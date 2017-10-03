@@ -11,10 +11,11 @@ import (
 var (
 	// ErrUnauthorized is the error returned for unauthorized requests.
 	ErrUnauthorized = goa.NewErrorClass("unauthorized", 401)
-	// ErrUnauthorized is the error returned for unauthorized requests.
+	// ErrInternalServer is the error returned for internal error.
 	ErrInternalServer = goa.NewErrorClass("internal error", 500)
 )
 
+// NewAdminUserAuthMiddleware token check authority type is admin
 func NewAdminUserAuthMiddleware() goa.Middleware {
 	scheme := app.NewAdminAuthSecurity()
 	return func(h goa.Handler) goa.Handler {
@@ -33,6 +34,7 @@ func NewAdminUserAuthMiddleware() goa.Middleware {
 	}
 }
 
+// NewGeneralUserAuthMiddleware token check authority type is general
 func NewGeneralUserAuthMiddleware() goa.Middleware {
 	scheme := app.NewGeneralAuthSecurity()
 	return func(h goa.Handler) goa.Handler {
@@ -51,7 +53,7 @@ func NewGeneralUserAuthMiddleware() goa.Middleware {
 	}
 }
 
-// NewTestModeMiddleware テスト用のミドルウェア。テスト用の固定値をContextに格納する。
+// NewTestModeMiddleware token check none executing
 func NewTestModeMiddleware() goa.Middleware {
 	return func(h goa.Handler) goa.Handler {
 		return func(ctx context.Context, rw http.ResponseWriter, req *http.Request) error {

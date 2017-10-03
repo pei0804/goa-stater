@@ -12,10 +12,11 @@ package models
 
 import (
 	"context"
+	"time"
+
 	"github.com/goadesign/goa"
 	"github.com/jinzhu/gorm"
 	"github.com/pei0804/goa-stater/app"
-	"time"
 )
 
 // Message model
