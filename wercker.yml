@@ -14,3 +14,7 @@ build:
         - script:
             name: lint
             code: make lint
+
+        - script:
+            name: build
+            code: make build
