@@ -1,0 +1,17 @@
+version: '3'
+services:
+  golang:
+    build:
+      context: .
+      args:
+        USER: $USER
+        UID: $UID
+    image: golang-app
+    volumes:
+      - ./go:/go
+    command: sh ./start.sh
+    env_file:
+      - .env
+    ports:
+      - 8080:8080
+    container_name: goa-stater

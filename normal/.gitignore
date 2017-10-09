@@ -1,3 +1,11 @@
+### goa ###
+app/
+client/
+tool/
+swagger/
+js/
+schema/
+
 # Compiled Object files, Static and Dynamic libs (Shared Objects)
 *.o
 *.a
